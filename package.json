@@ -1,0 +1,24 @@
+{
+  "name": "@philgs/sodium",
+  "version": "1.0.0",
+  "description": "A simple binding to native authenticated encryption functions from libsodium",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "libsodium",
+    "encryption"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philgs/sodium.git"
+  },
+  "author": {
+    "name": "Phil Gates-Shannon",
+    "email": "phil.gs@gmail.com",
+    "url": "http://philgs.me"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "sodium-encryption": "^1.2.3"
+  }
+}
