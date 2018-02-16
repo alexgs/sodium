@@ -1,6 +1,3 @@
-import { encrypt, decrypt, key, nonce } from 'sodium-encryption/sodium';
-
+const { encrypt, decrypt, key, nonce } = require('sodium-encryption/sodium');
 const sodium = { encrypt, decrypt, key, nonce };
-
-export default sodium;
-export { encrypt, decrypt, key, nonce  };
+module.exports = sodium;
