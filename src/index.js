@@ -2,8 +2,8 @@
 import { KEYBYTES, MACBYTES, NONCEBYTES } from './constants';
 
 import { encrypt, decrypt, key, nonce } from 'sodium-encryption/sodium';
-import nonceFactory from './Nonce';
-import type { Nonce } from './Nonce';
+import nonceFactory from './nonce';
+import type { Nonce } from './nonce';
 
 function newNonce():Nonce {
     const buffer = nonce();

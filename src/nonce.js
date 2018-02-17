@@ -25,7 +25,7 @@ const nonceObjectPrototype = {
     }
 };
 
-const NonceFactory = {
+const nonceFactory = {
     fromBuffer( buffer:Buffer ):Nonce {
         const nonceObject = Object.create( nonceObjectPrototype );
         nonceStorage.set( nonceObject, buffer );
@@ -47,4 +47,4 @@ const NonceFactory = {
     }
 };
 
-export default NonceFactory;
+export default nonceFactory;
