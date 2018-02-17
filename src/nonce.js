@@ -9,6 +9,12 @@ interface Nonce {
 
 export type { Nonce };
 
+const messages = {
+    badHexLength: ( actualLength:number ) => {
+        return `The nonce hex string must contain ${NONCEBYTES} bytes, but ${actualLength} bytes were provided.`
+    }
+};
+
 const nonceStorage:WeakMap<Object,Buffer> = new WeakMap();
 const nonceObjectPrototype = {
     getBuffer():Buffer {
@@ -35,16 +41,12 @@ const nonceFactory = {
     fromHex( hex:string ):Nonce {
         const buffer = Buffer.from( hex, ENCODING.HEX );
         if ( buffer.length !== NONCEBYTES ) {
-            throw new Error( this.messages.badHexLength( buffer.length ) );
+            throw new Error( messages.badHexLength( buffer.length ) );
         }
         return this.fromBuffer( buffer );
     },
 
-    messages: {
-        badHexLength: ( actualLength:number ) => {
-            return `The nonce hex string must contain ${NONCEBYTES} bytes, but ${actualLength} bytes were provided.`
-        }
-    }
 };
 
 export default nonceFactory;
+export { messages };

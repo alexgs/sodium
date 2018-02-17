@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import sodium from '../index';
-import nonceFactory from '../dist/nonce';
+import { messages } from '../dist/nonce';
 
 describe( 'An object with the "Nonce" interface', function() {
     it( 'always returns the same buffer', function() {
@@ -29,6 +29,6 @@ describe( 'The `nonceFromHex` method', function(  ) {
         const hex = 'f766048383a786c3ea65d5598b037990b6fe1568fa';
         expect( function() {
             sodium.nonceFromHex( hex );
-        } ).to.throw( Error, nonceFactory.messages.badHexLength( hex.length / 2 ) );
+        } ).to.throw( Error, messages.badHexLength( hex.length / 2 ) );
     } );
 } );

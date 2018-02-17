@@ -2,14 +2,13 @@ import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 
 import sodium from '../index';
-import clearTextFactory from '../dist/clear-text';
 
 chai.use( dirtyChai );
 
 describe( 'An object with the "ClearText" interface', function() {
     it( 'has a read-only property `string`', function() {
         const message = 'You may not recognize me because of the red arm.';
-        const clear = clearTextFactory.fromString( message );
+        const clear = sodium.clearFromString( message );
 
         expect( clear.string ).to.be.ok();
         expect( clear.buffer ).to.be.ok();
@@ -21,7 +20,7 @@ describe( 'An object with the "ClearText" interface', function() {
 
     it( 'has a read-only property `buffer`', function() {
         const message = 'You may not recognize me because of the red arm.';
-        const clear = clearTextFactory.fromString( message );
+        const clear = sodium.clearFromString( message );
 
         expect( clear.buffer ).to.be.ok();
 
