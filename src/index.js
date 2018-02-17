@@ -30,12 +30,11 @@ const sodiumLibrary = {
     KEYBYTES,
     MACBYTES,
     NONCEBYTES,
+    cipherFromHex,
     clearFromString,
-    encrypt,
-    decrypt,
-    key,
     newNonce,
-    nonce,
     nonceFromHex
 };
+
 export default sodiumLibrary;
+export { encrypt, decrypt, key, nonce, };
