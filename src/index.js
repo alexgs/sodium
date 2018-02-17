@@ -1,13 +1,28 @@
 // @flow
-const { crypto_secretbox_KEYBYTES, crypto_secretbox_NONCEBYTES, crypto_secretbox_MACBYTES } = require('sodium-native');
+import { KEYBYTES, MACBYTES, NONCEBYTES } from './constants';
+
 import { encrypt, decrypt, key, nonce } from 'sodium-encryption/sodium';
-const sodium = {
+import nonceFactory from './Nonce';
+import type { Nonce } from './Nonce';
+
+function newNonce():Nonce {
+    const buffer = nonce();
+    return nonceFactory.fromBuffer( buffer );
+}
+
+function nonceFromHex( hex:string ):Nonce {
+    return nonceFactory.fromHex( hex );
+}
+
+const sodiumLibrary = {
+    KEYBYTES,
+    MACBYTES,
+    NONCEBYTES,
     encrypt,
     decrypt,
     key,
+    newNonce,
     nonce,
-    KEYBYTES: crypto_secretbox_KEYBYTES,
-    MACBYTES: crypto_secretbox_MACBYTES,
-    NONCEBYTES: crypto_secretbox_NONCEBYTES
+    nonceFromHex
 };
-export default sodium;
+export default sodiumLibrary;
