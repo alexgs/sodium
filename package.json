@@ -1,6 +1,6 @@
 {
   "name": "@philgs/sodium",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple binding to native authenticated encryption functions from libsodium",
   "main": "index.js",
   "scripts": {},
@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "sodium-encryption": "^1.2.3"
+    "sodium-encryption": "^1.2.3",
+    "sodium-native": "^1.10.3"
   }
 }
