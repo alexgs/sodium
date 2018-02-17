@@ -11,9 +11,9 @@ describe( 'An object with the "Nonce" interface', function() {
         // console.log( `>>> 1|${nonce1.getHex()} <<<` );
         // console.log( `>>> 2|${nonce2.getHex()} <<<` );
 
-        expect( nonce1.getBuffer() ).to.equal( nonce1.getBuffer() );
-        expect( nonce2.getBuffer() ).to.equal( nonce2.getBuffer() );
-        expect( nonce1.getBuffer() ).to.not.equal( nonce2.getBuffer() );
+        expect( nonce1.buffer ).to.equal( nonce1.buffer );
+        expect( nonce2.buffer ).to.equal( nonce2.buffer );
+        expect( nonce1.buffer ).to.not.equal( nonce2.buffer );
     } );
 } );
 
@@ -21,8 +21,8 @@ describe( 'The `nonceFromHex` method', function(  ) {
     it( 'returns a "Nonce" object', function() {
         const hex = 'f766048383a786c3ea65d5598b037990b6fe1568fae57fe8';
         const nonce = sodium.nonceFromHex( hex );
-        expect( nonce.getHex() ).to.equal( hex );
-        expect( nonce.getBuffer() ).to.be.instanceOf( Buffer );
+        expect( nonce.hex ).to.equal( hex );
+        expect( nonce.buffer ).to.be.instanceOf( Buffer );
     } );
 
     it( 'throws an error if there is an incorrect number of bytes', function() {
