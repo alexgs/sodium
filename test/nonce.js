@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import sodium from '../index';
-import nonceFactory from '../dist/Nonce';
+import nonceFactory from '../dist/nonce';
 
 describe( 'An object with the "Nonce" interface', function() {
     it( 'always returns the same buffer', function() {
