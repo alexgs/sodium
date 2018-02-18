@@ -11,6 +11,8 @@ import type { ClearText } from './clear-text';
 import type { Key } from './key';
 import type { Nonce } from './nonce';
 
+type PlainObject = { [name:string]:mixed };
+
 function cipherFromHex( hex:string ):CipherText {
     return cipherTextFactory.fromHex( hex );
 }
@@ -51,3 +53,4 @@ const sodiumLibrary = {
 
 export default sodiumLibrary;
 export { encrypt, decrypt, key, nonce, };
+export type { PlainObject };
