@@ -18,11 +18,18 @@ const clearTextPrototype = {
 };
 
 const clearTextFactory = {
-    fromString( message:string ):ClearText {
-        const buffer = Buffer.from( message );
+    fromBuffer( buffer:Buffer ):ClearText {
         const clearTextObject = Object.create( clearTextPrototype );
         return Object.defineProperties( clearTextObject, {
             buffer: { value: buffer },
+            string: { value: buffer.toString() }
+        } );
+    },
+
+    fromString( message:string ):ClearText {
+        const clearTextObject = Object.create( clearTextPrototype );
+        return Object.defineProperties( clearTextObject, {
+            buffer: { value: Buffer.from( message ) },
             string: { value: message }
         });
     }

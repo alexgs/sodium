@@ -1,8 +1,9 @@
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import sodium from '../index';
+import sodium, * as utils from '../index';
 import cipherTextFactory from '../src/cipher-text';
+import { MACBYTES } from '../src/constants';
 
 chai.use( dirtyChai );
 
@@ -28,6 +29,23 @@ describe( 'An object with the "CipherText" interface', function() {
             cipher.buffer = 'I cannot abide these Jawas.';
         } ).to.throw( Error, 'Cannot assign to read only property \'buffer\' of object \'#<Object>\'' );
     } );
+
+    context( 'has a function `decrypt` that', function() {
+        it( 'returns a "clear-text" object', function() {
+            const key = utils.key();
+            const nonce = sodium.newNonce();
+            const message = 'You may not recognize me because of the red arm.';
+            const original = sodium.clearFromString( message );
+            const cipher = original.encrypt( key, nonce );
+            const final = cipher.decrypt( key, nonce );
+
+            expect( final.string ).to.be.ok();
+            expect( final.string ).to.equal( original.string );
+            expect( final.buffer ).to.be.ok();
+            expect( final.buffer.equals( original.buffer ) ).to.equal( true );
+        } );
+    } );
+
 } );
 
 describe( 'The cipher text factory', function() {
