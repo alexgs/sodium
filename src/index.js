@@ -17,6 +17,10 @@ function cipherFromHex( hex:string ):CipherText {
     return cipherTextFactory.fromHex( hex );
 }
 
+function clearFromObject( object:PlainObject ):ClearText {
+    return clearTextFactory.fromPlainObject( object );
+}
+
 function clearFromString( message:string ):ClearText {
     return clearTextFactory.fromString( message );
 }
@@ -44,6 +48,7 @@ const sodiumLibrary = {
     MACBYTES,
     NONCEBYTES,
     cipherFromHex,
+    clearFromObject,
     clearFromString,
     keyFromHex,
     newKey,
