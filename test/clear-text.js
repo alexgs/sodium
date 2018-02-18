@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import sodium, * as utils from '../index';
+import sodium from '../index';
 import { MACBYTES } from '../src/constants';
 
 chai.use( dirtyChai );
@@ -32,7 +32,7 @@ describe( 'An object with the "ClearText" interface', function() {
 
     context( 'has a function `encrypt` that', function() {
         it( 'returns a "cipher-text" object', function() {
-            const key = utils.key();
+            const key = sodium.newKey();
             const nonce = sodium.newNonce();
             const message = 'You may not recognize me because of the red arm.';
             const clear = sodium.clearFromString( message );

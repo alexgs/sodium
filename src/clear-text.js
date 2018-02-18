@@ -1,18 +1,19 @@
 // @flow
+import cipherTextFactory from './cipher-text';
 import { encrypt } from './index';
 import type { CipherText } from './cipher-text';
+import type { Key } from './key';
 import type { Nonce } from './nonce';
-import cipherTextFactory from './cipher-text';
 
 interface ClearText {
     buffer:Buffer;
-    encrypt: ( key:Buffer, nonce:Nonce ) => CipherText;
+    encrypt: ( key:Key, nonce:Nonce ) => CipherText;
     string:string;
 }
 
 const clearTextPrototype = {
-    encrypt( key:Buffer, nonce:Nonce ):CipherText {
-        const cipherBuffer = encrypt( this.buffer, nonce.buffer, key );
+    encrypt( key:Key, nonce:Nonce ):CipherText {
+        const cipherBuffer = encrypt( this.buffer, nonce.buffer, key.buffer );
         return cipherTextFactory.fromBuffer( cipherBuffer );
     }
 };
