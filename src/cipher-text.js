@@ -7,13 +7,20 @@ interface CipherText {
 }
 
 const cipherTextFactory = {
-    fromHex( hex:string ):CipherText {
-        const buffer = Buffer.from( hex, ENCODING.HEX );
-        const cipherTextObject = Object.defineProperties( {}, {
+    fromBuffer( buffer:Buffer ):CipherText {
+        return Object.defineProperties( {}, {
             buffer: { value: buffer },
+            hex: { value: buffer.toString( ENCODING.HEX ) }
+        } );
+    },
+
+    fromHex( hex:string ):CipherText {
+        // const buffer = Buffer.from( hex, ENCODING.HEX );
+        // const cipherTextObject = {};
+        return Object.defineProperties( {}, {
+            buffer: { value: Buffer.from( hex, ENCODING.HEX ) },
             hex: { value: hex }
         } );
-        return cipherTextObject;
     }
 };
 
